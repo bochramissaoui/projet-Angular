@@ -1,0 +1,45 @@
+<h2> Reservations List</h2>
+<table class = "table table-striped">
+    <thead>
+     <tr>
+            <th> Title</th>
+            <th> Start </th>
+            <th> End</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let reservation of reservations" >
+            <td> {{ reservation.title }} </td>
+            <td> {{ reservation.start }} </td>
+            <td> {{ reservation.end }} </td>
+            <td>
+                <button (click)="deleteReservation(reservation.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="col-md-6 offset-md-3">
+  <h3> Add Reservations </h3>
+  <form (ngSubmit) = "onSubmit()">
+    <div class="form-group">
+      <label> title</label>
+      <input type="text" class ="form-control" id = "name"
+             [(ngModel)] = "reservation.title" name = "name">
+    </div>
+
+    <div class="form-group">
+      <label> start</label>
+      <input type="date" class ="form-control" id = "start"
+             [(ngModel)] = "reservation.start" name ="start">
+    </div>
+
+    <div class="form-group">
+      <label> end</label>
+      <input type="date" class ="form-control" id = "end"
+             [(ngModel)] = "reservation.end" name = "end">
+    </div>
+
+    <button class = "btn btn-success" type ="submit">Submit</button>
+
+  </form>
+</div>

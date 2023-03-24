@@ -1,0 +1,54 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Create Marker </h3>
+    <form #Creatform="ngForm" (ngSubmit)="onSubmit(Creatform)">
+
+        <div class="form-group">
+            <label> name</label>
+            <input type="text" class ="form-control" id = "name"
+                [(ngModel)] = "marker.name" name = "name" required>
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['name']?.valid &&
+        Creatform.controls['name']?.touched"> Please enter a valid name</span>
+        <div class="form-group">
+            <label> domaine</label>
+            <input type="text" class ="form-control" id = "domaine"
+                [(ngModel)] = "marker.domaine" name = "domaine" required>
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['domaine']?.valid &&
+        Creatform.controls['domaine']?.touched"> Please enter a valid domaine</span>
+        <div class="form-group">
+            <label> lat</label>
+            <input type="text" class ="form-control" id = "lat"
+                [(ngModel)] = "marker.lat" name = "lat" required
+                pattern="[0-9]+([\.][0-9]{0,16})?">
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['lat']?.valid &&
+        Creatform.controls['lat']?.touched"> Please enter a valid Latitude</span>
+        <div class="form-group">
+            <label> lng</label>
+            <input type="text" class ="form-control" id = "lng"
+                [(ngModel)] = "marker.lng" name = "lng" required
+                pattern="[0-9]+([\.][0-9]{0,16})?">
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['lng']?.valid &&
+        Creatform.controls['lng']?.touched"> Please enter a valid Latitude</span>
+        <div class="form-group">
+            <label> information</label>
+            <input type="text" class ="form-control" id = "information"
+                [(ngModel)] = "marker.information" name = "information" required=>
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['information']?.valid &&
+        Creatform.controls['information']?.touched"> Informations is required</span>
+        <div class="form-group">
+            <label> imageUrl</label>
+            <input type="text" class ="form-control" id = "imageUrl"
+                [(ngModel)] = "marker.imageUrl" name = "imageUrl" required>
+        </div>
+        <span class="text" style="color: red;" *ngIf="!Creatform.controls['imageUrl']?.valid &&
+        Creatform.controls['imageUrl']?.touched"> Image Url is required</span>
+        <br>
+        <button class = "btn btn-success" type ="submit" [disabled]="!Creatform.valid">Submit</button>
+
+    </form>
+    </div>
+

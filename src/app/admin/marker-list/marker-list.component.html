@@ -1,0 +1,27 @@
+<h2> Marker List</h2>
+<table class = "table table-striped">
+    <thead>
+     <tr>
+            <th> Name</th>
+            <th> Domaine </th>
+            <th> lat</th>
+            <th> lng </th>
+            <th> information</th>
+            <th><button (click) = "createMarker()"  class = "btn btn-info"> Add Marker</button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let marker of markers" >
+            <td> {{ marker.name }} </td>
+            <td> {{ marker.domaine }} </td>
+            <td> {{ marker.lat }} </td>
+            <td> {{ marker.lng}} </td>
+            <td style="width: 50%;"> {{ marker.information}} </td>
+            <td >
+                <button (click) = "deleteMarker(marker.id)" class = "btn btn-outline-danger" style="margin-right: 10px;"> Delete</button>
+                <button (click) = "reservationList(marker.id)" class = "btn btn-outline-success"style="margin-right: 10px;" > All Reservations</button>
+                <button (click)="update(marker.id)" class = "btn btn-outline-primary"style="margin-right: 10px;" > Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,98 @@
+<body>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <div id="map"></div>
+        </div>
+
+        <div class="col info">
+          <h3 class="l"> Search For A Specific Partner</h3>
+          <div class="input-group mb-3">
+            <button type="button" class="btn btn-outline-secondary" (click)="rechercher()">show</button>
+            <select class="form-select" [(ngModel)]="selectedOption">
+              <option value="All" >All</option>
+              <option *ngFor="let do of domaines" value={{do.name}}>{{do.name}}</option>
+
+            </select>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+      tabindex="-1">
+      <div class="modal-dialog modal-xl modal-dialog-centered main">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">Plus D'information</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div *ngFor="let marker of markers ">
+              <div *ngIf="marker.id==display">
+
+                <img src="{{marker.imageUrl}}" class="img-fluid">
+
+
+                <h1>{{marker.name}}</h1>
+                <p>{{marker.information}}</p>
+              </div>
+            </div>
+
+            <full-calendar class="fc" *ngIf='calendarVisible' [options]='calendarOptions' id="fc"></full-calendar>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal">Faire
+                une Reservation</button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"> </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="col-md-6 offset-md-3">
+              <h3> Ajoutez votre reservation </h3>
+              <form (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                  <label> title</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="reservation.title" name="name">
+                </div>
+
+                <div class="form-group">
+                  <label> start</label>
+                  <input type="date" class="form-control" id="start" [(ngModel)]="reservation.start" name="start">
+                </div>
+
+                <div class="form-group">
+                  <label> end</label>
+                  <input type="date" class="form-control" id="end" [(ngModel)]="reservation.end" name="end">
+                </div>
+                <div style="margin-top:10px ; margin-left : 30px">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="Submit" class="btn  btn-success" data-bs-dismiss="modal"
+                    style="margin-left:15px ;">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="aa" data-bs-toggle="modal" target="__blank" href="#exampleModalToggle" hidden>Open
+      first modal</button>
+  </body>
